@@ -1,0 +1,37 @@
+name: Life_Connect_admin
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  google_fonts: ^6.2.1
+  flutter_launcher_icons: ^0.14.2
+  intl: ^0.20.1
+  provider: ^6.1.2
+  shared_preferences: ^2.3.5
+  sizer: ^3.0.5
+  url_launcher: ^6.3.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter_launcher_icons:
+  image_path: "assets/iconrounded.png"
+  android: "launcher_icon"
+  ios: true
+  min_sdk_android: 24
+  adaptive_icon_background: "#ffffff" # You can use a color or image for the background
+  adaptive_icon_foreground: "assets/iconrounded.png" # For adaptive icons on Android
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
