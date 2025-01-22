@@ -25,7 +25,7 @@ void main() async {
       builder: (context, orientation, deviceType) {
         return MultiProvider(
           providers: [
-            ChangeNotifierProvider(create: (_) => TabIndexNotifier()),
+              ChangeNotifierProvider(create: (_) => TabIndexNotifier()),
             ChangeNotifierProvider(create: (_) => UserProvider()..loadUser()),
             ChangeNotifierProvider(
                 create: (_) => HospitalProvider()..fetchHospitals()),
