@@ -40,7 +40,7 @@ class HospitalProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> deleteHospital(String hospitalName, BuildContext context) async {
+  Future<void> deleteHospital(int id, BuildContext context) async {
     _isLoading = true;
     errorMessage = null;
     notifyListeners();
@@ -48,7 +48,7 @@ class HospitalProvider extends ChangeNotifier {
     try {
       final response = await http.delete(
         Uri.parse(
-            'https://lifeproject.pythonanywhere.com/hospital/hospital-details/$hospitalName/'),
+            'https://lifeproject.pythonanywhere.com/hospital/register-details/$id/'),
       );
       if (response.statusCode == 204) {
         Navigator.pop(context);

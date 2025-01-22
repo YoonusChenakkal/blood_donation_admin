@@ -51,7 +51,7 @@ class HospitalDetails extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () async {
-             await hospitalProvider.deleteHospital(hospital.name, context);
+              await hospitalProvider.deleteHospital(hospital.id, context);
             },
             icon: const Icon(Icons.delete),
             color: Colors.white,
