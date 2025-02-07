@@ -18,14 +18,27 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
+  // Ensure widgets binding is initialized
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Lock orientation to portrait mode
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
+
+  // Run the app
   runApp(
     Sizer(
       builder: (context, orientation, deviceType) {
         return MultiProvider(
           providers: [
-              ChangeNotifierProvider(create: (_) => TabIndexNotifier()),
+            ChangeNotifierProvider(create: (_) => TabIndexNotifier()),
             ChangeNotifierProvider(create: (_) => UserProvider()..loadUser()),
             ChangeNotifierProvider(
                 create: (_) => HospitalProvider()..fetchHospitals()),
@@ -40,6 +53,7 @@ void main() async {
     ),
   );
 }
+
 
 class MainApp extends StatelessWidget {
   const MainApp({
