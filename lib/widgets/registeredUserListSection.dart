@@ -5,9 +5,23 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
-class userRegisteredListSection extends StatelessWidget {
+class userRegisteredListSection extends StatefulWidget {
   const userRegisteredListSection({super.key, required this.camp});
   final camp;
+
+  @override
+  State<userRegisteredListSection> createState() =>
+      _userRegisteredListSectionState();
+}
+
+class _userRegisteredListSectionState extends State<userRegisteredListSection> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Provider.of<Campsprovider>(context, listen: false)
+        .fetchRegistrations(widget.camp.id, context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +49,8 @@ class userRegisteredListSection extends StatelessWidget {
                       text: 'Retry',
                       buttonType: ButtonType.Outlined,
                       isLoading: campsProvider.isLoading,
-                      onPressed: () =>
-                          campsProvider.fetchRegistrations(camp.id, context))
+                      onPressed: () => campsProvider.fetchRegistrations(
+                          widget.camp.id, context))
                 ],
               ),
             );
@@ -48,14 +62,14 @@ class userRegisteredListSection extends StatelessWidget {
                   text: 'Fetch',
                   buttonType: ButtonType.Outlined,
                   isLoading: campsProvider.isLoading,
-                  onPressed: () =>
-                      campsProvider.fetchRegistrations(camp.id, context)),
+                  onPressed: () => campsProvider.fetchRegistrations(
+                      widget.camp.id, context)),
             );
           }
 
           return RefreshIndicator(
             onRefresh: () async {
-              await campsProvider.fetchRegistrations(camp.id, context);
+              await campsProvider.fetchRegistrations(widget.camp.id, context);
             },
             child: Column(
               children: [
